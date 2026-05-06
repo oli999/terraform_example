@@ -1,0 +1,30 @@
+sh -i "terraform-key.pem" ec2-user@[출력된_IP]
+
+# 버킷 목록 확인 (내가 만든 버킷이 보여야 함)
+aws s3 ls
+
+# 파일 업로드 테스트
+echo "hello s3" > test.txt
+aws s3 cp test.txt s3://[출력된_버킷_이름]/
+===============================================
+
+aws s3 ls
+
+my-tf-test-bucket-fd54b9a4
+
+echo "hello s3" > test.txt
+
+aws s3 cp test.txt s3://my-tf-test-bucket-fd54b9a4
+
+aws s3 ls s3://my-tf-test-bucket-fd54b9a4/
+
+aws s3 cp s3://my-tf-test-bucket-fd54b9a4/test.txt -
+
+aws s3 cp s3://my-tf-test-bucket-fd54b9a4/test.txt ./downloaded_hello.txt
+cat downloaded_hello.txt
+
+# 1개 삭제
+aws s3 rm s3://my-tf-test-bucket-fd54b9a4/test.txt
+
+# 모두 삭제 (모두 삭제해야 destroy 된다)
+aws s3 rm s3://my-tf-test-bucket-fd54b9a4/ --recursive
