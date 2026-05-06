@@ -1,0 +1,10 @@
+# test04_postgres_db_recover2/memo.txt 
+
+# 생성된 s3 bucket 의 이름 (본인이 생성한 이름)
+db-backup-storage-fd316344
+
+# 현재 경로에 있는 full_db_backup.sql 파일을 s3 버킷에 동일한 파일명으로 업로드하기 
+aws s3 cp ./full_db_backup.sql  s3://db-backup-storage-fd316344/full_db_backup.sql
+
+# 목록 확인하기
+aws s3 ls s3://db-backup-storage-fd316344/
