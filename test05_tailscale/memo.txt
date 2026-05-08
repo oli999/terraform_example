@@ -1,0 +1,10 @@
+# jmespath 관련 에러
+
+target_device_id: "{{ tailscale_devices.json.devices | json_query(query) }}"
+
+의 json_query() 함수 때문에 에러 발생 
+
+# 에러나면 
+python3.12 -m pip --version 
+python3.12 -m ensurepip --upgrade
+python3.12 -m pip install jmespath
