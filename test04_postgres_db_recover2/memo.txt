@@ -8,3 +8,8 @@ aws s3 cp ./full_db_backup.sql  s3://db-backup-storage-fd316344/full_db_backup.s
 
 # 목록 확인하기
 aws s3 ls s3://db-backup-storage-fd316344/
+
+# 모두 삭제 (모두 삭제해야 destroy 된다)
+aws s3 rm s3://db-backup-storage-fd316344/ --recursive
+
+# 모두 삭제후에 terraform destroy 하면 s3 bucket 도 같이 삭제 된다.
